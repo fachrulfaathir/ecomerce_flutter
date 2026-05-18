@@ -103,6 +103,49 @@ class SignInPage extends StatelessWidget {
     );
   }
 
+  Widget signInButton() {
+    return Container(
+      height: 50,
+      width: double.infinity,
+      margin: EdgeInsets.only(top: 30),
+      child: TextButton(
+        onPressed: () {
+        },
+        style: TextButton.styleFrom(
+          backgroundColor: primaryColor,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))
+        ),
+        child: Text(
+          'Sign In',
+          style: primaryTextStyle.copyWith(fontSize: 16, fontWeight: medium),
+        ),
+      ),
+    );
+  }
+
+  Widget footer() {
+    return Container(
+      margin: EdgeInsets.only(bottom: 30),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'Don\'t have an account? ',
+            style: subtitleTextStyle,
+          ),
+          GestureDetector(
+            onTap: () {
+            },
+            child: Text(
+              'Sign Up',
+              style: purpleTextStyle.copyWith(fontSize: 16, fontWeight: medium),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -115,7 +158,10 @@ class SignInPage extends StatelessWidget {
           children: [
             header(),
             emailInput(),
-            passwordInput()
+            passwordInput(),
+            signInButton(),
+            Spacer(),
+            footer()
             ],
           ),
         )

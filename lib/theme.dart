@@ -13,6 +13,7 @@ Color bgColor3 = const Color(0xFF242231);
 Color primaryTextColor = const Color(0xFFF1F0F2);
 Color secondaryTextColor = const Color(0xFF999999);
 Color subtitleTextColor = const Color(0xFF504F5E);
+Color purpleTextColor = const Color(0xFF6C5ECF);
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(color: primaryTextColor);
 
@@ -21,6 +22,8 @@ TextStyle secondaryTextStyle = GoogleFonts.poppins(color: secondaryTextColor);
 TextStyle priceTextStyle = GoogleFonts.poppins(color: priceColor);
 
 TextStyle subtitleTextStyle = GoogleFonts.poppins(color: subtitleTextColor);
+
+TextStyle purpleTextStyle = GoogleFonts.poppins(color: purpleTextColor);
 
 FontWeight light = FontWeight.w300;
 FontWeight regular = FontWeight.w400;
