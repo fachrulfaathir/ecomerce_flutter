@@ -1,3 +1,5 @@
+import 'package:ecomerce_flutter/pages/sign_in_page.dart';
+import 'package:ecomerce_flutter/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -6,31 +8,16 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 82, 4, 218)),
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Cashy"),
-          backgroundColor: const Color.fromARGB(255, 82, 4, 218),
-          foregroundColor: Colors.white,
-          actions: <Widget>[
-            IconButton(onPressed: () {}, icon: Icon(Icons.email))
-          ],
-        ),
-        body: const Center(
-          child: Image(
-            image: AssetImage("assets/icon_cart.png"),
-          ),
-        ),
-      ),
+      routes: {
+        '/': (context) => const SplashPage(),
+        '/sign-in': (context) => const SignInPage(),
+      },
     );
   }
 }
