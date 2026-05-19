@@ -123,7 +123,7 @@ class SignInPage extends StatelessWidget {
     );
   }
 
-  Widget footer() {
+  Widget footer(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 30),
       child: Row(
@@ -135,6 +135,7 @@ class SignInPage extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
+              Navigator.pushNamed(context, '/sign-up');
             },
             child: Text(
               'Sign Up',
@@ -162,7 +163,7 @@ class SignInPage extends StatelessWidget {
             passwordInput(),
             signInButton(),
             Spacer(),
-            footer()
+            footer(context)
             ],
           ),
         )
