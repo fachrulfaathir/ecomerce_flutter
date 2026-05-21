@@ -1,3 +1,4 @@
+import 'package:ecomerce_flutter/pages/main_page.dart';
 import 'package:ecomerce_flutter/pages/sign_in_page.dart';
 import 'package:ecomerce_flutter/pages/sign_up_page.dart';
 import 'package:ecomerce_flutter/pages/splash_page.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const SplashPage(),
         '/sign-in': (context) => const SignInPage(),
         '/sign-up': (context) => const SignUpPage(),
+        '/main': (context) => const MainPage(),
       },
     );
   }

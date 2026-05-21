@@ -144,6 +144,7 @@ class SignUpPage extends StatelessWidget {
                   SizedBox(width: 16,),
                   Expanded(child : TextFormField(
                     style: primaryTextStyle,
+                    obscureText: true,
                     decoration: InputDecoration.collapsed(hintText: 'Your Password', hintStyle: subtitleTextStyle),
                   ))
                  ]
@@ -155,13 +156,15 @@ class SignUpPage extends StatelessWidget {
       );
     }
 
-    Widget signUpButton(){
+    Widget signUpButton(context){
       return Container (
         height:50,
         width: double.infinity,
         margin: EdgeInsets.only(top: 20),
         child : TextButton(
-          onPressed: () {},
+          onPressed: () {
+             Navigator.pushNamed(context, '/main');
+          },
           style: TextButton.styleFrom(
             backgroundColor: primaryColor,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))
@@ -181,7 +184,7 @@ class SignUpPage extends StatelessWidget {
             ,
             GestureDetector(
               onTap : () {
-                Navigator.pushNamed(context, '/sign-in');
+                Navigator.pop(context);
               },
               child : Text('Sign In', style: purpleTextStyle.copyWith(fontSize: 14),)
             )
@@ -206,7 +209,7 @@ class SignUpPage extends StatelessWidget {
               userNameInput(),
               emailInput(),
               passwordInput(),
-              signUpButton(),
+              signUpButton(context),
               Spacer(),
               footer(context)
             ],
