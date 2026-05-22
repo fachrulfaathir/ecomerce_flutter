@@ -9,7 +9,6 @@ class ChatPage extends StatelessWidget {
     return Row(
       children: [
        Expanded(
-        flex: 9,
          child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -19,10 +18,7 @@ class ChatPage extends StatelessWidget {
          ),
        )
       ,
-       Expanded(
-        
-         flex: 3,          
-           child: Container(
+       Container(
             width: 54,
             height: 54,
             decoration: BoxDecoration(
@@ -32,7 +28,6 @@ class ChatPage extends StatelessWidget {
               )
             ),
                  ),
-         ),
       ],
      
     );
