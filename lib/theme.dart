@@ -16,6 +16,9 @@ Color secondaryTextColor = const Color(0xFF999999);
 Color subtitleTextColor = const Color(0xFF504F5E);
 Color purpleTextColor = const Color(0xFF6C5ECF);
 
+Color iconColorActive = const Color(0xFF6C5ECF);
+Color iconColorInActive = const Color(0xFF808191);
+
 TextStyle primaryTextStyle = GoogleFonts.poppins(color: primaryTextColor);
 
 TextStyle secondaryTextStyle = GoogleFonts.poppins(color: secondaryTextColor);

@@ -156,7 +156,7 @@ class SignUpPage extends StatelessWidget {
       );
     }
 
-    Widget signUpButton(context){
+    Widget signUpButton(BuildContext context){
       return Container (
         height:50,
         width: double.infinity,

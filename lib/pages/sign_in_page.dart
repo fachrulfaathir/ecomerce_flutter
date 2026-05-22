@@ -103,7 +103,7 @@ class SignInPage extends StatelessWidget {
     );
   }
 
-  Widget signInButton(context) {
+  Widget signInButton(BuildContext context) {
     return Container(
       height: 50,
       width: double.infinity,
