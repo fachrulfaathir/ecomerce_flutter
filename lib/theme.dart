@@ -16,8 +16,16 @@ Color secondaryTextColor = const Color(0xFF999999);
 Color subtitleTextColor = const Color(0xFF504F5E);
 Color purpleTextColor = const Color(0xFF6C5ECF);
 
+Color headingTextColor = const Color(0xFF2E2E2E);
+
 Color iconColorActive = const Color(0xFF6C5ECF);
 Color iconColorInActive = const Color(0xFF808191);
+
+Color transparentColor = Colors.transparent;
+
+Color backgroundColorPopular = const Color(0xFFF1F0F2);
+
+Color genreColorShoes = const Color(0xFF999999);
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(color: primaryTextColor);
 
@@ -28,6 +36,11 @@ TextStyle priceTextStyle = GoogleFonts.poppins(color: priceColor);
 TextStyle subtitleTextStyle = GoogleFonts.poppins(color: subtitleTextColor);
 
 TextStyle purpleTextStyle = GoogleFonts.poppins(color: purpleTextColor);
+
+TextStyle headingTextStyle = GoogleFonts.poppins(color: headingTextColor);
+
+TextStyle genreTextStyle = GoogleFonts.poppins(color: genreColorShoes);
+
 
 FontWeight light = FontWeight.w300;
 FontWeight regular = FontWeight.w400;
