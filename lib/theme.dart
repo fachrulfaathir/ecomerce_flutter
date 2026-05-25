@@ -26,6 +26,7 @@ Color transparentColor = Colors.transparent;
 Color backgroundColorPopular = const Color(0xFFF1F0F2);
 
 Color genreColorShoes = const Color(0xFF999999);
+Color newArrivalColor = const Color(0xFFC4C4C4);
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(color: primaryTextColor);
 

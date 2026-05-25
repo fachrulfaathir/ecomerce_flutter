@@ -1,5 +1,7 @@
+import 'package:ecomerce_flutter/pages/widget/new_arrival_card.dart';
 import 'package:ecomerce_flutter/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:ecomerce_flutter/pages/widget/product_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -91,28 +93,40 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  Widget titleNewArrival(){
+    return Container(
+      margin: EdgeInsets.only(top: defaultMargin),
+      child: Text('New Arrivals', style: primaryTextStyle.copyWith(fontSize: 22, fontWeight: semiBold),),
+    );
+  }
+
   Widget popularProducts() {
   return  Container(
-            padding: EdgeInsets.only(top: defaultMargin, ),
-            margin: EdgeInsets.only(top: 14),
-            width: 215,height: 278,
-            decoration: BoxDecoration(
-              color: backgroundColorPopular,
-              borderRadius: BorderRadius.circular(12)
-            ),
-            child : Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.asset('assets/image_shoes.png',   width: double.infinity, ),
-                  Text('Hiking', style: subtitleTextStyle.copyWith(fontSize: 14, fontWeight: medium)),
-                  SizedBox(height: 6,),
-                  Text('COURT VISION 2.0', style: headingTextStyle.copyWith(fontSize: 16, fontWeight: semiBold)),
-                  Text('Rp. 250.000', style: priceTextStyle.copyWith(fontSize: 14, fontWeight: medium)),
-          ],
-        ),
-      )
+          margin: EdgeInsets.only(top: 14),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+                  children: [
+                    PopularProductCard(),
+                    PopularProductCard(),
+                    PopularProductCard(),
+                  ]
+                )
+          )
+    );
+  }
+
+  Widget newArrival(){
+    return Container(
+      margin: EdgeInsets.only(top: 14),
+
+      child: Column(
+        children: [
+          NewArrivalCard(),
+          NewArrivalCard(),
+          NewArrivalCard(),
+        ],
+      ),
     );
   }
 
@@ -120,15 +134,20 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
   List<String> dataCategories = ['All Shoes', 'Running', 'Training', 'Basketball', 'Hiking', 'Soccer'];
   return Container(
-      margin: EdgeInsets.only(top: defaultMargin, left: defaultMargin, right: defaultMargin),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          header(),
-          categories(dataCategories),
-          titlePopularProduct(),
-          popularProducts()
-        ],
+      margin: EdgeInsets.all(defaultMargin),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            header(),
+            categories(dataCategories),
+            titlePopularProduct(),
+            popularProducts(),
+            titleNewArrival(),
+            newArrival()
+          ],
+        ),
       ),        
     );
   }
