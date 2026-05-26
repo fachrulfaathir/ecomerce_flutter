@@ -18,10 +18,10 @@ class ChatPage extends StatelessWidget {
 
   Widget content(){
     return  Container(
-      margin: EdgeInsets.only(left: defaultMargin, right: defaultMargin, top: 33),
+      margin: EdgeInsets.only(left: defaultMargin, right: defaultMargin),
       child: Column(
         children: [
-          ChatTile()
+          ChatTile(),
         ],
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:ecomerce_flutter/pages/chat_detail_page.dart';
 import 'package:ecomerce_flutter/pages/home/chat_page.dart';
 import 'package:ecomerce_flutter/pages/home/home_page.dart';
 import 'package:ecomerce_flutter/pages/home/main_page.dart';
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
         '/home_page': (context) => const HomePage(),
         '/chat_page': (context) => const ChatPage(),
         '/wishlist_page': (context) => const WishlistPage(),
-        '/profile_page': (context) => const ProfilePage()
+        '/profile_page': (context) => const ProfilePage(),
+        '/detail-chat': (context) => const ChatDetailPage(),
       },
     );
   }
