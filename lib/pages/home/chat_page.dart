@@ -1,12 +1,73 @@
+import 'package:ecomerce_flutter/pages/widget/chat_tile.dart';
+import 'package:ecomerce_flutter/theme.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
 
+
+  Widget header(){
+    return AppBar(
+      backgroundColor: bgColor1,
+      centerTitle: true,
+      title: Text('Message Support', style: primaryTextStyle.copyWith(fontSize: 18)),
+      elevation: 0,
+      automaticallyImplyLeading: false,
+    );
+  }
+
+  Widget content(){
+    return  Container(
+      margin: EdgeInsets.only(left: defaultMargin, right: defaultMargin, top: 33),
+      child: Column(
+        children: [
+          ChatTile()
+        ],
+      ),
+    );
+  }
+
+  Widget emptyChat(){
+      return  Expanded(
+      child: Container(
+        color: bgColor3,
+        width: double.infinity,
+        child: 
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+           Image.asset('assets/icon_headset.png', width: 80, height: 80,),
+           SizedBox(height: 20,),
+           Text('Opss no message yet?', style: primaryTextStyle.copyWith(fontSize: 16),),
+           SizedBox(height: 12,),
+           Text('You have never done a transaction', style: genreTextStyle,),
+           SizedBox(height: 20,),
+           SizedBox(
+            height: 44,
+             child: TextButton(onPressed: () {}, 
+             style: TextButton.styleFrom(
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+              backgroundColor: primaryColor, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))) ,
+              child: 
+              Text('Explore Store', style: primaryTextStyle.copyWith(fontSize: 16))
+             ),
+           )
+          ],
+        )
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('Chat Page'),
+      child: Column(
+        children: [
+          header(),
+          // emptyChat()
+          content()
+        ],
+      )
     );
   }
 }
