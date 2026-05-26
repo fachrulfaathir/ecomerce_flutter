@@ -18,7 +18,7 @@ class ChatDetailPage extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Shoe Store', style: primaryTextStyle.copyWith(fontSize: 14)),
+              Text('Shoe Store', style: primaryTextStyle.copyWith(fontSize: 14, fontWeight: medium)),
               Text('Online', style: secondaryTextStyle.copyWith(fontWeight: light, fontSize: 14))
             ],
           )
@@ -27,11 +27,36 @@ class ChatDetailPage extends StatelessWidget {
     ));
   }
 
+  Widget chatInput(){
+    return Container(
+      margin: EdgeInsets.all(20),
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(
+              height: 65,
+              decoration: BoxDecoration(color: bgColor4, borderRadius: BorderRadius.circular(12)),
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              child: Center(child: 
+              TextFormField(
+                style: TextStyle(color: primaryTextColor),
+                decoration: InputDecoration(hintText: 'Type Message...', hintStyle: subtitleTextStyle),
+              )),
+            ),
+          ),
+          SizedBox(width:20),
+          Image.asset('assets/button_send.png', width: 45)
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgColor3,
       appBar: header(),
+      bottomNavigationBar: chatInput(),
     );
   }
 }
