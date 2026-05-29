@@ -1,3 +1,4 @@
+import 'package:ecomerce_flutter/pages/widget/chat_bubble.dart';
 import 'package:ecomerce_flutter/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -99,12 +100,23 @@ class ChatDetailPage extends StatelessWidget {
     );
   }
 
+  Widget content(){
+    return ListView(
+      padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+      children: [
+        ChatBubble(text: 'Hi, This item is still available?', isSender: true),
+        ChatBubble(text: 'Good night, This item is only available in size 42 and 43', isSender: false),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgColor3,
       appBar: header(),
       bottomNavigationBar: chatInput(),
+      body: content(),
     );
   }
 }
