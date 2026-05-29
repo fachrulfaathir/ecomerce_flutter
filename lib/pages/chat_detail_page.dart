@@ -104,8 +104,8 @@ class ChatDetailPage extends StatelessWidget {
     return ListView(
       padding: EdgeInsets.symmetric(horizontal: defaultMargin),
       children: [
-        ChatBubble(text: 'Hi, This item is still available?', isSender: true),
-        ChatBubble(text: 'Good night, This item is only available in size 42 and 43', isSender: false),
+        ChatBubble(text: 'Hi, This item is still available?', isSender: true, hasProduct: true),
+        ChatBubble(text: 'Good night, This item is only available in size 42 and 43', isSender: false, hasProduct: false),
       ],
     );
   }

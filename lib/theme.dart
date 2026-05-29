@@ -43,6 +43,8 @@ TextStyle headingTextStyle = GoogleFonts.poppins(color: headingTextColor);
 
 TextStyle genreTextStyle = GoogleFonts.poppins(color: genreColorShoes);
 
+TextStyle bgColor5TextStyle = GoogleFonts.poppins(color: bgColor5);
+
 
 FontWeight light = FontWeight.w300;
 FontWeight regular = FontWeight.w400;
