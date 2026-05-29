@@ -27,26 +27,74 @@ class ChatDetailPage extends StatelessWidget {
     ));
   }
 
+  Widget productReview(){
+    return Container(
+      width: 225,
+      height: 74,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: bgColor5,
+        border: Border.all(
+          color: primaryColor
+        )
+      ),
+      margin: EdgeInsets.only(bottom: 20),
+      padding: EdgeInsets.all(10),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Image.asset('assets/image_shoes.png', width: 54, height: 54,)
+            ),
+            SizedBox(width: 12,),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('COURT VISION FROM THE PAST', style: primaryTextStyle.copyWith(fontSize: 14, fontWeight: regular, overflow:TextOverflow.ellipsis ),),
+                  Text('\$57,15', style: priceTextStyle.copyWith(fontSize: 14, fontWeight: medium),)
+                ],
+              ),
+            ),
+            SizedBox(width: 10,),
+            IconButton(
+              padding: EdgeInsets.zero,
+              alignment: Alignment.topCenter,
+              onPressed: () {},
+              icon: Image.asset('assets/button_close.png', width: 22,height: 22,))
+        ],
+      ),
+    );
+  }
+
   Widget chatInput(){
     return Container(
       margin: EdgeInsets.all(20),
-      child: Row(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Container(
-              height: 65,
-              decoration: BoxDecoration(color: bgColor4, borderRadius: BorderRadius.circular(12)),
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              child: Center(child: 
-              TextFormField(
-                style: TextStyle(color: primaryTextColor),
-                decoration: InputDecoration(hintText: 'Type Message...', hintStyle: subtitleTextStyle),
-              )),
+          productReview(),
+          Row(
+          children: [
+            Expanded(
+              child: Container(
+                height: 65,
+                decoration: BoxDecoration(color: bgColor4, borderRadius: BorderRadius.circular(12)),
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                child: Center(child: 
+                TextFormField(
+                  style: TextStyle(color: primaryTextColor),
+                  decoration: InputDecoration(hintText: 'Type Message...', hintStyle: subtitleTextStyle),
+                )),
+              ),
             ),
-          ),
-          SizedBox(width:20),
-          Image.asset('assets/button_send.png', width: 45)
-        ],
+            SizedBox(width:20),
+            Image.asset('assets/button_send.png', width: 45)
+          ],
+        ),]
       ),
     );
   }
