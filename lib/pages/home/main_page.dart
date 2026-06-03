@@ -98,7 +98,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bgColor1,
+      backgroundColor: currentIndex == 1 ? bgColor1 : bgColor3,
       floatingActionButton: floatingButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: bottomNavigation(),

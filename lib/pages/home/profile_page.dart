@@ -3,7 +3,7 @@ import 'package:ecomerce_flutter/theme.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
-  AppBar header(){
+  AppBar header(BuildContext context){
     return AppBar(
       toolbarHeight: 124,
       centerTitle:true,
@@ -31,7 +31,11 @@ class ProfilePage extends StatelessWidget {
                   ],
                 ),
               ),
-              Image.asset('assets/button_exit.png', width: 20, height: 20,)
+              GestureDetector(
+                onTap: (){
+                  Navigator.pushNamedAndRemoveUntil(context, '/sign-in', (route) => false);
+                },
+                child: Image.asset('assets/button_exit.png', width: 20, height: 20,))
             ],
           ),
         ),
@@ -39,10 +43,55 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
+  Widget menuItem(String text){
+    return Container(
+      margin: EdgeInsets.only(bottom: 12),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(text, style: secondaryTextStyle.copyWith(fontSize: 13, fontWeight: regular)),
+          Icon(Icons.chevron_right, color: secondaryTextColor,)
+        ],
+      ),
+    );
+  }
+
+  Widget content(BuildContext context){
+    return Container(
+    decoration: BoxDecoration(
+      color: bgColor3,
+    ),
+    padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+    width: double.infinity,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 20,),
+          Text('Account', style: primaryTextStyle.copyWith(fontSize: 18, fontWeight: semiBold)),
+          SizedBox(height: 16,),
+          GestureDetector(
+            onTap: (){
+              Navigator.pushNamed(context, '/edit-profile');
+            },
+            child: menuItem('Edit Profile')),
+          menuItem('Change Password'),
+          menuItem('Notification Settings'),
+          SizedBox(height: defaultMargin),
+          Text('General', style: primaryTextStyle.copyWith(fontSize: 18, fontWeight: semiBold)),
+          SizedBox(height: 16,),
+          menuItem('Help Center'),
+          menuItem('Privacy & Policy'),
+          menuItem('Term & Conditions'),
+        ],
+      )
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: header(),
+      appBar: header(context),
+      body: content(context),
     );
   }
 }
