@@ -8,6 +8,7 @@ import 'package:ecomerce_flutter/pages/sign_in_page.dart';
 import 'package:ecomerce_flutter/pages/sign_up_page.dart';
 import 'package:ecomerce_flutter/pages/splash_page.dart';
 import 'package:ecomerce_flutter/pages/edit_profile_page.dart';
+import 'package:ecomerce_flutter/pages/product_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/profile_page': (context) => const ProfilePage(),
         '/detail-chat': (context) => const ChatDetailPage(),
         '/edit-profile': (context) => const EditProfilePage(),
+        '/product': (context) => const ProductPage(),
       },
     );
   }

@@ -29,6 +29,8 @@ Color backgroundColorPopular = const Color(0xFFF1F0F2);
 Color genreColorShoes = const Color(0xFF999999);
 Color newArrivalColor = const Color(0xFFC4C4C4);
 
+Color imageColorShoes = const Color(0xFFECEDEF);
+
 TextStyle primaryTextStyle = GoogleFonts.poppins(color: primaryTextColor);
 
 TextStyle secondaryTextStyle = GoogleFonts.poppins(color: secondaryTextColor);
@@ -44,6 +46,9 @@ TextStyle headingTextStyle = GoogleFonts.poppins(color: headingTextColor);
 TextStyle genreTextStyle = GoogleFonts.poppins(color: genreColorShoes);
 
 TextStyle bgColor5TextStyle = GoogleFonts.poppins(color: bgColor5);
+
+
+
 
 
 FontWeight light = FontWeight.w300;
