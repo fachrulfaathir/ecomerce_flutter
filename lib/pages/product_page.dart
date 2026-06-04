@@ -29,11 +29,14 @@ class _ProductPageState extends State<ProductPage> {
 
   Widget header( BuildContext context) {
 
-   final List images = [
+    List images = [
       'assets/image_shoes2.png',
       'assets/image_shoes.png',
       'assets/image_shoes3.png',
     ];
+
+  
+
 
     int index = -1;
  
@@ -82,8 +85,8 @@ class _ProductPageState extends State<ProductPage> {
          viewportFraction: 1,
          enableInfiniteScroll: false
        )
-       )
-       ,
+       ),
+       SizedBox(height: 20,),
        Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: images.map((e) {
@@ -91,18 +94,134 @@ class _ProductPageState extends State<ProductPage> {
           return indicator(index);
           }).toList()
        ),
-       SizedBox(height: 17,),
        ],
      ),
    );
   }
 
+  Widget familiarShoesCard(String imageUrl, int index) {
+    return Container(
+      width: 54,
+      height: 54,
+      margin: EdgeInsets.only( right: 16, left: index == 1 ? 16 : 0 ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(6),
+        image: DecorationImage(image: AssetImage(imageUrl))
+      ),
+    );
+  }
+
+  Widget content(){
+    int index = 0;
+
+   List familiarImages = [
+      'assets/image_shoes.png',
+      'assets/image_shoes2.png',
+      'assets/image_shoes3.png',
+      'assets/image_shoes4.png',
+      'assets/image_shoes5.png',
+      'assets/image_shoes6.png',
+      'assets/image_shoes7.png',
+      'assets/image_shoes8.png',
+    ];
+
+    return Container(
+      margin: EdgeInsets.only(top: 17), 
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        color: bgColor1,
+      ),
+      child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.only(top: defaultMargin, left: defaultMargin, right: defaultMargin),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children : [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                  Text('TERREX URBAN LOW', style: primaryTextStyle.copyWith(fontSize: 18, fontWeight: semiBold)),
+                  SizedBox(height: 6,),
+                  Text('Hiking', style: secondaryTextStyle.copyWith(fontSize: 12, fontWeight: regular)),
+                ],
+                ),
+                Image.asset('assets/button_wishlist.png', width: 40, height: 40,)
+              ]
+            ),
+          ),
+
+          //PRICE
+          Container(
+            margin: EdgeInsets.only(top: 20, left: defaultMargin, right: defaultMargin),
+            padding: EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: bgColor2,
+              borderRadius: BorderRadius.circular(4)
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children : [
+                Text('Price starts from', style: primaryTextStyle.copyWith(fontSize: 14, fontWeight: regular)),
+                Text('\$143,98', style: priceTextStyle.copyWith(fontSize: 16, fontWeight: semiBold)),
+              ]
+            ),
+          ),
+
+          //Description
+          Container(
+            margin: EdgeInsets.only(top: defaultMargin),
+            width: double.infinity,
+            padding: EdgeInsets.only( left: defaultMargin, right: defaultMargin),
+            child : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children : [
+                Text('Description', style : primaryTextStyle.copyWith(fontSize: 14, fontWeight: medium)),
+                SizedBox(height: 12,),
+                Text('Unpaved trails and mixed surfaces are easy you have the traction and support you need. Casual enough for the daily commute.', style: subtitleTextStyle.copyWith(fontSize: 14, fontWeight: light)),
+              ]
+            )
+          ),
+
+          //Fimiliar Shoes
+         Container(
+            margin: EdgeInsets.only(top: defaultMargin),
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsetsGeometry.symmetric(horizontal: defaultMargin),
+                  child: Text('Fimiliar Shoes', style: primaryTextStyle.copyWith(fontSize: 14, fontWeight: medium))),
+                SizedBox(height: 12),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(children: 
+                    familiarImages.map(
+                      (image) {
+                       index++; 
+                        return familiarShoesCard(image, index);
+                        
+                      }
+                        ).toList() 
+                  ,),
+                )
+              ],
+            ),
+         )          
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: imageColorShoes,
         body: ListView(
           children: [
             header(context),
+            content()
           ],
         ),
       );
