@@ -151,7 +151,7 @@ class _ProductPageState extends State<ProductPage> {
             ),
           ),
 
-          //PRICE
+          // * PRICE
           Container(
             margin: EdgeInsets.only(top: 20, left: defaultMargin, right: defaultMargin),
             padding: EdgeInsets.all(16),
@@ -168,7 +168,7 @@ class _ProductPageState extends State<ProductPage> {
             ),
           ),
 
-          //Description
+          // * Description
           Container(
             margin: EdgeInsets.only(top: defaultMargin),
             width: double.infinity,
@@ -183,7 +183,7 @@ class _ProductPageState extends State<ProductPage> {
             )
           ),
 
-          //Fimiliar Shoes
+          // * Fimiliar Shoes
          Container(
             margin: EdgeInsets.only(top: defaultMargin),
             width: double.infinity,
@@ -203,12 +203,37 @@ class _ProductPageState extends State<ProductPage> {
                         return familiarShoesCard(image, index);
                         
                       }
-                        ).toList() 
-                  ,),
+                        ).toList(),
+                  ),
                 )
               ],
             ),
-         )          
+           ),
+
+        Container(
+              margin: EdgeInsets.all(defaultMargin),
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: (){},
+                    child: Image.asset('assets/button_chat.png', width: 54, height: 54,)),
+                    SizedBox(width: 16,),
+                    Expanded(
+                      child: Container(
+                        height: 54,
+                        child: TextButton(onPressed: () {}, 
+                        style: TextButton.styleFrom(
+                           shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadiusGeometry.circular(12)
+                           ),
+                            backgroundColor: primaryColor
+                        ), child: Text('Add to Cart', style: primaryTextStyle.copyWith(fontSize: 16, fontWeight: semiBold),)),
+                      ),
+                    )
+                ],
+              ),
+          )
+
         ],
       ),
     );
