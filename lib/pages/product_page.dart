@@ -13,6 +13,7 @@ class ProductPage extends StatefulWidget {
 class _ProductPageState extends State<ProductPage> {
   
   int currentIndex = 0;
+  bool isWhistlist = false;
 
   Widget indicator(int index) {
     return Container(
@@ -114,6 +115,7 @@ class _ProductPageState extends State<ProductPage> {
   Widget content(){
     int index = 0;
 
+
    List familiarImages = [
       'assets/image_shoes.png',
       'assets/image_shoes2.png',
@@ -146,10 +148,37 @@ class _ProductPageState extends State<ProductPage> {
                   Text('Hiking', style: secondaryTextStyle.copyWith(fontSize: 12, fontWeight: regular)),
                 ],
                 ),
-                Image.asset('assets/button_wishlist.png', width: 40, height: 40,)
+                GestureDetector(
+                  onTap: (){
+                    setState(() {
+                      isWhistlist = !isWhistlist;
+                    });
+
+                    if(isWhistlist){
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: secondaryColor,
+                        content: Text('Has been added to the Whitelist', textAlign: TextAlign.center,)
+                        )
+                    );
+                    }else{
+                       ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: alertColor,
+                          content: Text('Has been removed from the Whitelist', textAlign: TextAlign.center,)
+                        )
+                    );
+                    }
+                  },
+                  child: Image.asset(
+                    isWhistlist ? 'assets/button_wishlist_blue.png' : 'assets/button_wishlist.png'
+                    , width: 40, height: 40,),
+                )
               ]
             ),
           ),
+
+          
 
           // * PRICE
           Container(
