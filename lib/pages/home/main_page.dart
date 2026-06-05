@@ -19,7 +19,9 @@ class _MainPageState extends State<MainPage> {
 
   Widget floatingButton(){
     return FloatingActionButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.pushNamed(context, '/cart');
+      },
       backgroundColor: secondaryColor,
       child : Image.asset('assets/icon_cart.png', width: 20, height: 22)
     );
