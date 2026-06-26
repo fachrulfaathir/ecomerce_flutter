@@ -1,3 +1,4 @@
+import 'package:ecomerce_flutter/pages/widget/cart_card.dart';
 import 'package:flutter/material.dart';
 import 'package:ecomerce_flutter/theme.dart';
 
@@ -11,7 +12,7 @@ class CartPage extends StatelessWidget {
       backgroundColor: bgColor1,
       toolbarHeight: 70,
       leading: GestureDetector(
-        onLongPress: () => Navigator.pop(context),
+        onTap: () => Navigator.pop(context),
         child: Icon(Icons.chevron_left, color: primaryTextColor,)),
       automaticallyImplyLeading: false,
       elevation: 0,
@@ -44,12 +45,73 @@ class CartPage extends StatelessWidget {
     );
   }
 
+  Widget content(){
+    return ListView(
+      padding: EdgeInsets.symmetric(
+        horizontal: defaultMargin
+      ),
+      children: [
+        CartCard()
+      ],
+    );
+  }
+
+  Widget customBottomNav(BuildContext context){
+    return SizedBox(
+      height: 195,
+      child: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+               Text('Subtotal', style: primaryTextStyle.copyWith(fontSize: 14, fontWeight: regular)),
+                Text('\$287,96', style: priceTexStyle.copyWith(fontSize: 16, fontWeight: semiBold))
+              ],
+            ),
+          ),
+          SizedBox(height: 30),
+          Divider(thickness: 0.5, color: subtitleTextColor),
+          Container(
+            
+              margin: EdgeInsets.all(defaultMargin),
+              height: 50,
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: primaryColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(12)
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 20)
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, "/checkout");
+                }, 
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Continue to Checkout', style: primaryTextStyle.copyWith(fontSize: 16, fontWeight: semiBold)),
+                    Icon(
+                        Icons.arrow_forward,
+                        color: primaryTextColor, 
+                      )
+                ],
+              )  
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgColor3,
       appBar: header(context),
-      body: emptyCart() ,
+      body: content() ,
+      bottomNavigationBar: customBottomNav(context),
     );
   }
 }

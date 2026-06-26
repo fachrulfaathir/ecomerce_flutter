@@ -47,8 +47,9 @@ TextStyle genreTextStyle = GoogleFonts.poppins(color: genreColorShoes);
 
 TextStyle bgColor5TextStyle = GoogleFonts.poppins(color: bgColor5);
 
+TextStyle priceTexStyle = GoogleFonts.poppins(color: priceColor);
 
-
+TextStyle removeTextStyle = GoogleFonts.poppins(color: alertColor);
 
 
 FontWeight light = FontWeight.w300;
