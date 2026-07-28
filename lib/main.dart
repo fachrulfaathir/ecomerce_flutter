@@ -1,6 +1,7 @@
 import 'package:ecomerce_flutter/pages/cart_page.dart';
 import 'package:ecomerce_flutter/pages/chat_detail_page.dart';
 import 'package:ecomerce_flutter/pages/checkou_page.dart';
+import 'package:ecomerce_flutter/pages/checkout_success_page.dart';
 import 'package:ecomerce_flutter/pages/home/chat_page.dart';
 import 'package:ecomerce_flutter/pages/home/home_page.dart';
 import 'package:ecomerce_flutter/pages/home/main_page.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         '/product': (context) => const ProductPage(),
         '/cart': (context) => const CartPage(),
         '/checkout': (context) => const CheckoutPage(),
+        '/checkout-success': (context) => const CheckoutSuccessPage(),
       },
     );
   }
