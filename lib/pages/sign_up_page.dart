@@ -1,11 +1,53 @@
+import 'package:ecomerce_flutter/pages/widget/loading_button.dart';
+import 'package:ecomerce_flutter/providers/auth_provider.dart';
 import 'package:ecomerce_flutter/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
 
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  TextEditingController nameController = TextEditingController();
+   TextEditingController usernameController = TextEditingController();
+   TextEditingController emailController = TextEditingController();
+   TextEditingController passwordController = TextEditingController();
+
+   bool isLoadingButton = false;
+@override
+Widget build(BuildContext context) {
+  AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    
+  handleSignUp() async {
+
+    setState(() {
+      isLoadingButton = true;
+    });
+
+
+    if(await authProvider.register(name: nameController.text, username: usernameController.text, email: emailController.text, password: passwordController.text))
+    {
+    
+     Navigator.pushNamedAndRemoveUntil(context, '/main', (route) => false);
+    } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: alertColor,
+                         content: Text('Gagal Register!', textAlign: TextAlign.center,)
+                        )
+        );
+    }
+    setState(() {
+      isLoadingButton = false;
+    });
+ 
+  }
 
   Widget header(){
     return Container(
@@ -43,6 +85,7 @@ class SignUpPage extends StatelessWidget {
                     Image.asset('assets/icon_name.png', width : 17),
                     SizedBox(width: 16,),
                     Expanded(child: TextFormField(
+                      controller: nameController,
                       style: primaryTextStyle,
                       decoration : InputDecoration.collapsed(hintText: 'Your Full Name', hintStyle: subtitleTextStyle)
                     ))
@@ -77,6 +120,7 @@ class SignUpPage extends StatelessWidget {
                     SizedBox(width: 16,),
                     Expanded(
                       child: TextFormField(
+                        controller: usernameController,
                         style : primaryTextStyle,
                         decoration : InputDecoration.collapsed(hintText: 'Your Username', hintStyle: subtitleTextStyle))
                       )
@@ -110,6 +154,7 @@ class SignUpPage extends StatelessWidget {
                     Image.asset('assets/icon_email.png', width: 17,),
                     SizedBox(width: 16,),
                     Expanded(child : TextFormField(
+                      controller: emailController,
                       style: primaryTextStyle,
                       decoration: InputDecoration.collapsed(hintText: 'Your Email Address', hintStyle: subtitleTextStyle),
                     ))
@@ -143,6 +188,7 @@ class SignUpPage extends StatelessWidget {
                   Image.asset('assets/icon_password.png', width: 17,),
                   SizedBox(width: 16,),
                   Expanded(child : TextFormField(
+                    controller: passwordController,
                     style: primaryTextStyle,
                     obscureText: true,
                     decoration: InputDecoration.collapsed(hintText: 'Your Password', hintStyle: subtitleTextStyle),
@@ -157,14 +203,13 @@ class SignUpPage extends StatelessWidget {
     }
 
     Widget signUpButton(BuildContext context){
+      
       return Container (
         height:50,
         width: double.infinity,
         margin: EdgeInsets.only(top: 20),
         child : TextButton(
-          onPressed: () {
-             Navigator.pushNamed(context, '/main');
-          },
+          onPressed: handleSignUp,
           style: TextButton.styleFrom(
             backgroundColor: primaryColor,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))
@@ -193,8 +238,8 @@ class SignUpPage extends StatelessWidget {
       );
     }
 
-  @override
-  Widget build(BuildContext context) {
+    print('isLoadingButton: ${isLoadingButton}');
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: bgColor1,
@@ -209,7 +254,7 @@ class SignUpPage extends StatelessWidget {
               userNameInput(),
               emailInput(),
               passwordInput(),
-              signUpButton(context),
+              isLoadingButton ? LoadingButton() : signUpButton(context),
               Spacer(),
               footer(context)
             ],

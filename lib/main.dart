@@ -12,7 +12,9 @@ import 'package:ecomerce_flutter/pages/sign_up_page.dart';
 import 'package:ecomerce_flutter/pages/splash_page.dart';
 import 'package:ecomerce_flutter/pages/edit_profile_page.dart';
 import 'package:ecomerce_flutter/pages/product_page.dart';
+import 'package:ecomerce_flutter/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +26,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => AuthProvider()),
+      ],
+      child : MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (context) => const SplashPage(),
@@ -42,6 +48,7 @@ class MyApp extends StatelessWidget {
         '/checkout': (context) => const CheckoutPage(),
         '/checkout-success': (context) => const CheckoutSuccessPage(),
       },
+    )
     );
   }
 }
